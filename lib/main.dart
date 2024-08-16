@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:dice_roll_app/src/app.dart';
+import 'package:dice_roll_app/src/constants.dart';
 
 void main() {
-  runApp(const DiceRollApp());
+  runApp(const ProviderScope(child: DiceRollApp()));
 }
 
 class DiceRollApp extends StatelessWidget {
@@ -9,12 +12,11 @@ class DiceRollApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Dice Roll App with Flutter.'),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData().copyWith(colorScheme: kColorScheme),
+      darkTheme: ThemeData.dark().copyWith(colorScheme: kDarkColorScheme),
+      home: const TabScreen(),
     );
   }
 }
